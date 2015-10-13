@@ -1,0 +1,77 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidBuildToolsVersion = "23.0.1"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 23
+
+    //Libraries
+    // Base
+    appCompatVersion = '22.2.1'
+
+    // Views
+    recyclerViewVersion = '22.2.1'
+    cardViewVersion = '22.2.1'
+
+    // Injections
+    daggerVersion = '2.0'
+    butterKnifeVersion = '7.0.1'
+
+    // Reactive
+    rxJavaVersion = '1.0.12'
+    rxAndroidVersion = '0.24.0'
+
+    // Network
+    retrofitVersion = '1.9.0'
+    retrofitConverterJacksonVersion = '1.9.0'
+    okHttpVersion = '2.4.0'
+
+    javaxAnnotationVersion = '10.0-b28'
+    androidAnnotationsVersion = '20.0.0'
+
+    jacksonCoreVersion = '2.6.0'
+    jacksonAnnotationsVersion = '2.6.0'
+    jacksonDatabindVersion = '2.6.0'
+
+
+
+    presentationDependencies = [
+            appCompat:          "com.android.support:appcompat-v7:${appCompatVersion}",
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            butterKnife:        "com.jakewharton:butterknife:${butterKnifeVersion}",
+            recyclerView:       "com.android.support:recyclerview-v7:${recyclerViewVersion}",
+            cardView:           "com.android.support:cardview-v7:${cardViewVersion}",
+            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+    ]
+
+    domainDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
+            jacksonCore:        "com.fasterxml.jackson.core:jackson-core:${jacksonCoreVersion}",
+            jacksonAnnotations: "com.fasterxml.jackson.core:jackson-annotations:${jacksonAnnotationsVersion}",
+            jacksonDatabind:    "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+    ]
+
+    dataDependencies = [
+            daggerCompiler:     "com.google.dagger:dagger-compiler:${daggerVersion}",
+            dagger:             "com.google.dagger:dagger:${daggerVersion}",
+            okHttp:             "com.squareup.okhttp:okhttp:${okHttpVersion}",
+            rxJava:             "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid:          "io.reactivex:rxandroid:${rxAndroidVersion}",
+            javaxAnnotation:    "org.glassfish:javax.annotation:${javaxAnnotationVersion}",
+            androidAnnotations: "com.android.support:support-annotations:${androidAnnotationsVersion}",
+            retrofit:           "com.squareup.retrofit:retrofit:${retrofitVersion}",
+            retrofitJackson:    "com.squareup.retrofit:converter-jackson:${retrofitConverterJacksonVersion}"
+    ]
+}

@@ -1,0 +1,16 @@
+package com.mickaelg.cleanarchitecture.data.network;
+
+import com.mickaelg.cleanarchitecture.data.entities.PostEntity;
+
+import java.util.List;
+
+import rx.Observable;
+
+/**
+ * Created by mguilbeaud on 30/07/2015.
+ */
+public interface IRestAPI {
+    String API_BASE_URL = "http://jsonplaceholder.typicode.com";
+
+    Observable<List<PostEntity>> getPostList();
+}

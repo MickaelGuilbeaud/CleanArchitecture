@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TheCleanArchitecture</string>
+
+    <!-- region Common -->
+    <string name="default_error_message">Une erreur est survenue</string>
+    <!-- endregion -->
+
+    <!-- region Post listitem -->
+    <string name="post_listitem_user_id">Id de l\'utilisateur :</string>
+    <string name="post_listitem_post_id">Id du post :</string>
+    <!-- endregion -->
+
+</resources>

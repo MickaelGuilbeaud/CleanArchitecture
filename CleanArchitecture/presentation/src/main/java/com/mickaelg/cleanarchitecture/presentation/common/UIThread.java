@@ -1,5 +1,7 @@
 package com.mickaelg.cleanarchitecture.presentation.common;
 
+import com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread;
+
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -11,7 +13,7 @@ import rx.android.schedulers.AndroidSchedulers;
  * which will execute actions on the Android UI thread
  */
 @Singleton
-public class UIThread implements com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread {
+public class UIThread implements IPostExecutionThread {
 
     @Inject
     public UIThread() {}

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.mickaelg.cleanarchitecture.presentation.R;
 import com.mickaelg.cleanarchitecture.presentation.posts.models.PostModel;
 
 import java.util.List;
@@ -38,8 +39,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         holder.mTvPostTitle.setText(postModel.getTitle());
         holder.mTvPostContent.setText(postModel.getBody());
-        holder.mTvUserId.setText("" + postModel.getUserId());
-        holder.mTvPostId.setText("" + postModel.getId());
+        holder.mTvUserId.setText(String.valueOf(postModel.getUserId()));
+        holder.mTvPostId.setText(String.valueOf(postModel.getId()));
         holder.itemView.setTag(postModel);
     }
 
@@ -49,10 +50,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.post_title) TextView mTvPostTitle;
-        @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.post_content) TextView mTvPostContent;
-        @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.post_user_id) TextView mTvUserId;
-        @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.post_id) TextView mTvPostId;
+        @Bind(R.id.post_title) TextView mTvPostTitle;
+        @Bind(R.id.post_content) TextView mTvPostContent;
+        @Bind(R.id.post_user_id) TextView mTvUserId;
+        @Bind(R.id.post_id) TextView mTvPostId;
 
         public ViewHolder(View itemView) {
             super(itemView);

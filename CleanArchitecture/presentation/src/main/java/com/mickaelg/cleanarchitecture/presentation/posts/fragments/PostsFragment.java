@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mickaelg.cleanarchitecture.presentation.R;
 import com.mickaelg.cleanarchitecture.presentation.common.activities.BaseActivity;
 import com.mickaelg.cleanarchitecture.presentation.common.di.components.DaggerPostComponent;
 import com.mickaelg.cleanarchitecture.presentation.common.di.components.PostComponent;
@@ -30,18 +31,20 @@ import butterknife.ButterKnife;
 public class PostsFragment extends BaseFragment implements IPostsView {
 
     public final static String TAG = PostsFragment.class.getSimpleName();
-    public final static String LOG_TAG = TAG + ".LOG_TAG";
 
     // region Properties
 
-    @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.mRecyclerViewPosts) RecyclerView mPostsRecyclerView;
-    @Bind(com.mickaelg.cleanarchitecture.presentation.R.id.mLoadingPane) View mVLoadingPane;
+    @Bind(R.id.mRecyclerViewPosts)
+    RecyclerView mPostsRecyclerView;
+    @Bind(R.id.mLoadingPane)
+    View mVLoadingPane;
 
     private RecyclerView.LayoutManager mPostsLayoutManager;
     private RecyclerView.Adapter<PostsAdapter.ViewHolder> mPostsAdapter;
 
     private PostComponent mPostComponent;
-    @Inject @Named("postListPresenter")
+    @Inject
+    @Named("postListPresenter")
     IPostListPresenter mPostListPresenter;
 
     private List<PostModel> mPostsList = new ArrayList<>();
@@ -60,36 +63,42 @@ public class PostsFragment extends BaseFragment implements IPostsView {
 
     // region Lifecycle
 
-    @Override public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                       Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(com.mickaelg.cleanarchitecture.presentation.R.layout.fragment_post_list_layout, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View fragmentView = inflater.inflate(R.layout.fragment_post_list_layout, container, false);
         ButterKnife.bind(this, fragmentView);
         initializeUI();
         return fragmentView;
     }
 
-    @Override public void onActivityCreated(Bundle savedInstanceState) {
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initializeInjector();
         initialize();
     }
 
-    @Override public void onResume() {
+    @Override
+    public void onResume() {
         super.onResume();
         mPostListPresenter.resume();
     }
 
-    @Override public void onPause() {
+    @Override
+    public void onPause() {
         super.onPause();
         mPostListPresenter.pause();
     }
 
-    @Override public void onDestroy() {
+    @Override
+    public void onDestroy() {
         super.onDestroy();
         mPostListPresenter.destroy();
     }
 
-    @Override public void onDestroyView() {
+    @Override
+    public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
@@ -153,7 +162,7 @@ public class PostsFragment extends BaseFragment implements IPostsView {
         mPostsRecyclerView.setLayoutManager(mPostsLayoutManager);
 
         // Set the adapter
-        mPostsAdapter = new PostsAdapter(mPostsList, com.mickaelg.cleanarchitecture.presentation.R.layout.listitem_post_layout);
+        mPostsAdapter = new PostsAdapter(mPostsList, R.layout.listitem_post_layout);
         mPostsRecyclerView.setAdapter(mPostsAdapter);
     }
 

@@ -1,5 +1,6 @@
 package com.mickaelg.cleanarchitecture.domain.interactors;
 
+import com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread;
 import com.mickaelg.cleanarchitecture.domain.executor.IThreadExecutor;
 
 import rx.Observable;
@@ -19,12 +20,12 @@ import rx.subscriptions.Subscriptions;
 public abstract class UseCase {
 
     private final IThreadExecutor threadExecutor;
-    private final com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread postExecutionThread;
+    private final IPostExecutionThread postExecutionThread;
 
     private Subscription subscription = Subscriptions.empty();
 
     protected UseCase(IThreadExecutor threadExecutor,
-                      com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread postExecutionThread) {
+                      IPostExecutionThread postExecutionThread) {
         this.threadExecutor = threadExecutor;
         this.postExecutionThread = postExecutionThread;
     }

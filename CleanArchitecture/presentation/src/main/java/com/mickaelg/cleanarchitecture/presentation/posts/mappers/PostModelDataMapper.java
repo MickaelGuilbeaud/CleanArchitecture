@@ -1,5 +1,6 @@
 package com.mickaelg.cleanarchitecture.presentation.posts.mappers;
 
+import com.mickaelg.cleanarchitecture.domain.models.Post;
 import com.mickaelg.cleanarchitecture.presentation.posts.models.PostModel;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class PostModelDataMapper {
         // Nothing
     }
 
-    public PostModel transform(com.mickaelg.cleanarchitecture.domain.models.Post post) {
+    public PostModel transform(Post post) {
         if (post == null) {
             throw new IllegalArgumentException("Cannot transform a null value");
         }
@@ -28,11 +29,11 @@ public class PostModelDataMapper {
                 post.getBody());
     }
 
-    public List<PostModel> transform(List<com.mickaelg.cleanarchitecture.domain.models.Post> posts) {
+    public List<PostModel> transform(List<Post> posts) {
         List<PostModel> postsModel;
         if (posts != null && !posts.isEmpty()) {
             postsModel = new ArrayList<>(posts.size());
-            for (com.mickaelg.cleanarchitecture.domain.models.Post post : posts) {
+            for (Post post : posts) {
                 postsModel.add(transform(post));
             }
         } else {

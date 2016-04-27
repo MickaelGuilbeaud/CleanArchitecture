@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.mickaelg.cleanarchitecture.data.executor.JobExecutor;
 import com.mickaelg.cleanarchitecture.data.repository.PostDataRepository;
+import com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread;
 import com.mickaelg.cleanarchitecture.domain.executor.IThreadExecutor;
 import com.mickaelg.cleanarchitecture.domain.repositories.IPostRepository;
 import com.mickaelg.cleanarchitecture.presentation.common.AndroidApplication;
@@ -26,27 +27,32 @@ public class ApplicationModule {
         this.application = application;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     Context provideApplicationContext() {
         return this.application;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     Navigator provideNavigator() {
         return new Navigator();
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     IThreadExecutor provideThreadExecutor(JobExecutor jobExecutor) {
         return jobExecutor;
     }
 
-    @Provides @Singleton
-    com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread providePostExecutionThread(UIThread uiThread) {
+    @Provides
+    @Singleton
+    IPostExecutionThread providePostExecutionThread(UIThread uiThread) {
         return uiThread;
     }
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     IPostRepository providePostRepository(PostDataRepository postDataRepository) {
         return postDataRepository;
     }

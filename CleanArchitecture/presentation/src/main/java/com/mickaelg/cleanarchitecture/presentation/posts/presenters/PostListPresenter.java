@@ -2,6 +2,8 @@ package com.mickaelg.cleanarchitecture.presentation.posts.presenters;
 
 import android.support.annotation.NonNull;
 
+import com.mickaelg.cleanarchitecture.domain.interactors.DefaultSubscriber;
+import com.mickaelg.cleanarchitecture.domain.interactors.UseCase;
 import com.mickaelg.cleanarchitecture.domain.models.Post;
 import com.mickaelg.cleanarchitecture.presentation.posts.fragments.IPostsView;
 import com.mickaelg.cleanarchitecture.presentation.posts.mappers.PostModelDataMapper;
@@ -34,7 +36,7 @@ public class PostListPresenter implements IPostListPresenter {
     /**
      * UseCase providing the data
      */
-    private final com.mickaelg.cleanarchitecture.domain.interactors.UseCase mGetPostsUseCase;
+    private final UseCase mGetPostsUseCase;
     /**
      * DataMapper mapping Post to PostModel
      */
@@ -51,7 +53,7 @@ public class PostListPresenter implements IPostListPresenter {
      * @param postModelDataMapper postModelDataMapper
      */
     @Inject
-    public PostListPresenter(@Named("postList") com.mickaelg.cleanarchitecture.domain.interactors.UseCase getUserListUserCase, PostModelDataMapper postModelDataMapper) {
+    public PostListPresenter(@Named("postList") UseCase getUserListUserCase, PostModelDataMapper postModelDataMapper) {
         this.mGetPostsUseCase = getUserListUserCase;
         this.mPostModelDataMapper = postModelDataMapper;
     }
@@ -124,7 +126,7 @@ public class PostListPresenter implements IPostListPresenter {
      * Transform the Post in PostModel then show them in the view
      * @param posts posts to transform then show
      */
-    private void showPosts(List<com.mickaelg.cleanarchitecture.domain.models.Post> posts) {
+    private void showPosts(List<Post> posts) {
         List<PostModel> postsModel = mPostModelDataMapper.transform(posts);
         mPostsView.setPosts(postsModel);
     }
@@ -137,7 +139,7 @@ public class PostListPresenter implements IPostListPresenter {
     /**
      * Callback from our Observable<...>. It is executed in the UIThread.
      */
-    private final class PostListSubscriber extends com.mickaelg.cleanarchitecture.domain.interactors.DefaultSubscriber<List<Post>> {
+    private final class PostListSubscriber extends DefaultSubscriber<Post> {
 
         @Override
         public void onCompleted() {
@@ -153,9 +155,8 @@ public class PostListPresenter implements IPostListPresenter {
         }
 
         @Override
-        public void onNext(List<com.mickaelg.cleanarchitecture.domain.models.Post> modelPosts) {
+        public void onNext(Post modelPosts) {
             PostListPresenter.this.hideProgress();
-            PostListPresenter.this.showPosts(modelPosts);
         }
     }
 

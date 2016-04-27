@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import com.mickaelg.cleanarchitecture.presentation.common.di.HasComponent;
 
 /**
- * Base {@link android.app.Fragment} class for every fragment in this application.
+ * Base {@link Fragment} class for every fragment in this application.
  */
 public abstract class BaseFragment extends Fragment {
 

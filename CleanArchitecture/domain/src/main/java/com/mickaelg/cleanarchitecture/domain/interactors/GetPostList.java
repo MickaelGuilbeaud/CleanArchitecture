@@ -1,5 +1,6 @@
 package com.mickaelg.cleanarchitecture.domain.interactors;
 
+import com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread;
 import com.mickaelg.cleanarchitecture.domain.executor.IThreadExecutor;
 import com.mickaelg.cleanarchitecture.domain.models.Post;
 import com.mickaelg.cleanarchitecture.domain.repositories.IPostRepository;
@@ -19,7 +20,7 @@ public class GetPostList extends UseCase {
     @Inject
     public GetPostList(IPostRepository postRepository,
                        IThreadExecutor threadExecutor,
-                       com.mickaelg.cleanarchitecture.domain.executor.IPostExecutionThread postExecutionThread) {
+                       IPostExecutionThread postExecutionThread) {
         super(threadExecutor, postExecutionThread);
         this.postRepository = postRepository;
     }

@@ -1,5 +1,6 @@
 package com.mickaelg.cleanarchitecture.presentation.common.di.modules;
 
+import com.mickaelg.cleanarchitecture.domain.interactors.GetPostList;
 import com.mickaelg.cleanarchitecture.domain.interactors.UseCase;
 import com.mickaelg.cleanarchitecture.presentation.common.di.PerActivity;
 import com.mickaelg.cleanarchitecture.presentation.posts.presenters.IPostListPresenter;
@@ -20,7 +21,7 @@ public class PostModule {
 
     @Provides @PerActivity
     @Named("postList")
-    UseCase provideGetPostsUseCase(com.mickaelg.cleanarchitecture.domain.interactors.GetPostList getPostList) {
+    UseCase provideGetPostsUseCase(GetPostList getPostList) {
         return getPostList;
     }
 
